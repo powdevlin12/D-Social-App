@@ -14,7 +14,7 @@ type AppStackParamList = {
 
 const Stack = createStackNavigator<AppStackParamList>();
 
-function AppStack() {
+export default function NavigationApp() {
   return (
     <Stack.Navigator>
       <Stack.Screen name="Home" component={HomeScreen} />
