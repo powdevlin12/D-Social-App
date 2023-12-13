@@ -11,6 +11,12 @@ const HomeScreen = () => {
   return (
     <View style={styles.container}>
       <Button title='Go to Profile' onPress={() => navigation.navigate('Profile', {name : 'Dat'})}/>
+      <Button title='Go to SetLang' onPress={() => navigation.navigate('Settings', {
+        screen : 'SetLang',
+        params : {
+          lang : "en"
+        }
+      })}/>
     </View>
   )
 }

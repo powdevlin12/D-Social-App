@@ -5,7 +5,7 @@ import SetLangScreen from "../../../screens/app/setting/SetLangScreen";
 
 export type SettingParamList = {
   Setting : undefined,
-  SetLang ?: {lang : string},
+  SetLang : {lang : string},
   SetTheme ?: { theme : string }
 };
 

@@ -16,6 +16,7 @@ export type AppStackParamList = {
   Settings: NavigatorScreenParams<SettingParamList>;
 };
 
+
 const Stack = createBottomTabNavigator<AppStackParamList>();
 
 const routes: Array<React.ComponentProps<typeof Stack.Screen>> = [
