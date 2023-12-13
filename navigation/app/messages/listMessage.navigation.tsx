@@ -1,9 +1,8 @@
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import ListMessageScreen from "../../../screens/app/messages/listMessage/ListMessageScreen";
 import DetailMessageScreen from "../../../screens/app/messages/listMessage/DetailMessageScreen";
 import SettingMessageScreen from "../../../screens/app/messages/listMessage/SettingMessageScreen";
 import { MessageDrawType, MessageSettingDrawer } from "./settingMessage.draw";
 import { NavigatorScreenParams } from "@react-navigation/native";
+import { createStackNavigator } from "@react-navigation/stack";
 
 export type ListMessageParamList = {
   ListMessage : undefined,
@@ -11,7 +10,7 @@ export type ListMessageParamList = {
   SettingMessage : NavigatorScreenParams<MessageDrawType>
 };
 
-const ListMessageStack = createNativeStackNavigator<ListMessageParamList>()
+const ListMessageStack = createStackNavigator<ListMessageParamList>()
 
 export default function ListMessageNavigation() {
   return (

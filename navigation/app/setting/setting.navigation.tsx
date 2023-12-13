@@ -1,7 +1,7 @@
 import SettingScreen from "../../../screens/app/setting/SettingScreen";
 import SetThemeScreen from "../../../screens/app/setting/SetThemeScreen";
 import SetLangScreen from "../../../screens/app/setting/SetLangScreen";
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { createStackNavigator } from "@react-navigation/stack";
 
 export type SettingParamList = {
   Setting : undefined,
@@ -9,7 +9,7 @@ export type SettingParamList = {
   SetTheme ?: { theme : string }
 };
 
-const SettingStack = createNativeStackNavigator<SettingParamList>()
+const SettingStack = createStackNavigator<SettingParamList>()
 
 export default function SettingNavigation() {
   return (
