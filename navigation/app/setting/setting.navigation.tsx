@@ -1,38 +1,22 @@
-import { createStackNavigator } from "@react-navigation/stack";
 import SettingScreen from "../../../screens/app/setting/SettingScreen";
 import SetThemeScreen from "../../../screens/app/setting/SetThemeScreen";
 import SetLangScreen from "../../../screens/app/setting/SetLangScreen";
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 export type SettingParamList = {
   Setting : undefined,
-  SetLang : {lang : string},
+  SetLang ?: {lang : string},
   SetTheme ?: { theme : string }
 };
 
-const SettingStack = createStackNavigator<SettingParamList>()
-
-const routes: Array<React.ComponentProps<typeof SettingStack.Screen>> = [
-  {
-    name: "Setting",
-    component: SettingScreen,
-
-  },
-  {
-    name: "SetTheme",
-    component: SetThemeScreen,
-  },
-  {
-    name: "SetLang",
-    component: SetLangScreen,
-  },
-];
+const SettingStack = createNativeStackNavigator<SettingParamList>()
 
 export default function SettingNavigation() {
   return (
     <SettingStack.Navigator initialRouteName='Setting'>
-      {
-        routes.map(routeConfig => <SettingStack.Screen key={routeConfig.name} {...routeConfig} />)
-      }
+      <SettingStack.Screen key={"Setting"} name="Setting" component={SettingScreen} />
+      <SettingStack.Screen key={"SetTheme"} name="SetTheme" component={SetThemeScreen} />
+      <SettingStack.Screen key={"SetLang"} name="SetLang" component={SetLangScreen} />
     </SettingStack.Navigator>
   );
 }

@@ -8,11 +8,13 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { ProfileParams } from '../types/params/Profile';
 import SettingNavigation, { SettingParamList } from './app/setting/setting.navigation';
 import { NavigatorScreenParams } from '@react-navigation/native';
+import MessageScreen from '../screens/app/messages';
+import MessageNavigation from './app/messages/message.navigation';
 
 export type AppStackParamList = {
   Home: undefined;
   Notifications: undefined;
-  Profile: ProfileParams
+  Message: undefined
   Settings: NavigatorScreenParams<SettingParamList>;
 };
 
@@ -29,8 +31,8 @@ const routes: Array<React.ComponentProps<typeof Stack.Screen>> = [
     component: NotificationScreen,
   },
   {
-    name: "Profile",
-    component: ProfileScreen,
+    name: "Message",
+    component: MessageNavigation,
   },
   {
     name: "Settings",
