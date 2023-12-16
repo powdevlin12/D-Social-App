@@ -5,22 +5,24 @@ import ListMessageScreen from "../../../screens/app/messages/listMessage/ListMes
 import ReanimatedOne from "../../../screens/app/messages/animated/ReanimatedOne";
 import PanGesture from "../../../screens/app/messages/animated/PanGesture";
 import InterpolateScrollView from "../../../screens/app/messages/animated/InterpolateScrollView";
+import ChangeTheme from "../../../screens/app/messages/animated/ChangeTheme";
 
 export type MessageDrawType = {
   setTheme: undefined;
   setStatusActivity: undefined;
-  ListMessageDraw: undefined;
+  listMessageDraw: undefined;
   ReanimatedOne: undefined;
   PanGesture: undefined;
   InterpolateScrollView: undefined;
+  changeTheme: undefined;
 };
 
 const Drawer = createDrawerNavigator<MessageDrawType>();
 
 export function MessageSettingDrawer() {
   return (
-    <Drawer.Navigator initialRouteName="PanGesture">
-      <Drawer.Screen name="ListMessageDraw" component={ListMessageScreen} />
+    <Drawer.Navigator initialRouteName="changeTheme">
+      <Drawer.Screen name="listMessageDraw" component={ListMessageScreen} />
       <Drawer.Screen name="setTheme" component={SetThemeScreen} />
       <Drawer.Screen
         name="setStatusActivity"
@@ -32,6 +34,7 @@ export function MessageSettingDrawer() {
         name="InterpolateScrollView"
         component={InterpolateScrollView}
       />
+      <Drawer.Screen name="changeTheme" component={ChangeTheme} />
     </Drawer.Navigator>
   );
 }
