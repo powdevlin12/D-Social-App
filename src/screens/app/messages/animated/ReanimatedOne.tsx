@@ -1,9 +1,10 @@
-import { Button, StyleSheet, Text, View } from 'react-native'
-import React, { useEffect } from 'react'
+import { Button, StyleSheet, View } from 'react-native'
+import React, { useEffect, useState } from 'react'
 import Animated, { useAnimatedStyle, useSharedValue, withRepeat, withSpring, withTiming } from 'react-native-reanimated'
 
 const ReanimatedOne = () => {
   const SIZE = 150
+
 
   const progress = useSharedValue(1)
   const scale = useSharedValue(1)
