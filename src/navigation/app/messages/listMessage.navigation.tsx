@@ -15,7 +15,7 @@ const ListMessageStack = createStackNavigator<ListMessageParamList>()
 export default function ListMessageNavigation() {
   return (
     <ListMessageStack.Navigator initialRouteName='ListMessage'>
-      <ListMessageStack.Screen key={"ListMessage"} name="ListMessage" component={MessageSettingDrawer} />
+      <ListMessageStack.Screen key={"ListMessage"} name="ListMessage" component={MessageSettingDrawer} options={{headerShown : false}}/>
       <ListMessageStack.Screen key={"DetailMessage"} name="DetailMessage" component={DetailMessageScreen} />
       <ListMessageStack.Screen key={"SettingMessage"} name="SettingMessage" component={SettingMessageScreen} />
     </ListMessageStack.Navigator>

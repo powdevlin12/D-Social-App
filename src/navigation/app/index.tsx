@@ -28,6 +28,9 @@ const routes: Array<React.ComponentProps<typeof Stack.Screen>> = [
   {
     name: "Message",
     component: MessageNavigation,
+    options : {
+      headerShown : false
+    }
   },
   {
     name: "Settings",

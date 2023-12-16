@@ -16,6 +16,9 @@ export default function MessageNavigation() {
         key={"ListMessageStack"}
         name="ListMessageStack"
         component={ListMessageNavigation}
+        options={{
+          headerShown : false,
+        }}
       />
       <MessageStack.Screen
         key={"SettingMessageDraw"}
