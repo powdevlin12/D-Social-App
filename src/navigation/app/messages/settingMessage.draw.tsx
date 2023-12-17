@@ -6,6 +6,7 @@ import ReanimatedOne from "../../../screens/app/messages/animated/ReanimatedOne"
 import PanGesture from "../../../screens/app/messages/animated/PanGesture";
 import InterpolateScrollView from "../../../screens/app/messages/animated/InterpolateScrollView";
 import ChangeTheme from "../../../screens/app/messages/animated/ChangeTheme";
+import PinchGesture from "../../../screens/app/messages/animated/PinchGesture";
 
 export type MessageDrawType = {
   setTheme: undefined;
@@ -15,13 +16,14 @@ export type MessageDrawType = {
   PanGesture: undefined;
   InterpolateScrollView: undefined;
   changeTheme: undefined;
+  PinchGesture: undefined;
 };
 
 const Drawer = createDrawerNavigator<MessageDrawType>();
 
 export function MessageSettingDrawer() {
   return (
-    <Drawer.Navigator initialRouteName="changeTheme">
+    <Drawer.Navigator initialRouteName="PinchGesture">
       <Drawer.Screen name="listMessageDraw" component={ListMessageScreen} />
       <Drawer.Screen name="setTheme" component={SetThemeScreen} />
       <Drawer.Screen
@@ -35,6 +37,7 @@ export function MessageSettingDrawer() {
         component={InterpolateScrollView}
       />
       <Drawer.Screen name="changeTheme" component={ChangeTheme} />
+      <Drawer.Screen name="PinchGesture" component={PinchGesture} />
     </Drawer.Navigator>
   );
 }
