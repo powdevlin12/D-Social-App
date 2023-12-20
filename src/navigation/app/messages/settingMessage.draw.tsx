@@ -7,6 +7,7 @@ import PanGesture from "../../../screens/app/messages/animated/PanGesture";
 import InterpolateScrollView from "../../../screens/app/messages/animated/InterpolateScrollView";
 import ChangeTheme from "../../../screens/app/messages/animated/ChangeTheme";
 import PinchGesture from "../../../screens/app/messages/animated/PinchGesture";
+import DoubleTapIg from "../../../screens/app/messages/animated/DoubleTapIg";
 
 export type MessageDrawType = {
   setTheme: undefined;
@@ -17,13 +18,14 @@ export type MessageDrawType = {
   InterpolateScrollView: undefined;
   changeTheme: undefined;
   PinchGesture: undefined;
+  DoubleTabIg: undefined;
 };
 
 const Drawer = createDrawerNavigator<MessageDrawType>();
 
 export function MessageSettingDrawer() {
   return (
-    <Drawer.Navigator initialRouteName="PinchGesture">
+    <Drawer.Navigator initialRouteName="DoubleTabIg">
       <Drawer.Screen name="listMessageDraw" component={ListMessageScreen} />
       <Drawer.Screen name="setTheme" component={SetThemeScreen} />
       <Drawer.Screen
@@ -38,6 +40,7 @@ export function MessageSettingDrawer() {
       />
       <Drawer.Screen name="changeTheme" component={ChangeTheme} />
       <Drawer.Screen name="PinchGesture" component={PinchGesture} />
+      <Drawer.Screen name="DoubleTabIg" component={DoubleTapIg} />
     </Drawer.Navigator>
   );
 }

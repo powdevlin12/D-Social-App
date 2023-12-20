@@ -38,16 +38,6 @@ const PinchGesture = () => {
     });
 
   return (
-    // <PinchGestureHandler onGestureEvent={pinchHandler}>
-    //   <Animated.View style={{ flex: 1 }}>
-    //     <Animated.Image
-    //       style={[{ flex: 1 }, rStyle]}
-    //       source={{ uri: imgUri }}
-    //     />
-    //     <Animated.View style={[styles.focalPoint, rFocalStyle]}></Animated.View>
-    //   </Animated.View>
-    // </PinchGestureHandler>
-
     <GestureDetector gesture={pinch}>
       <Animated.View style={{ flex: 1 }}>
         <Animated.Image

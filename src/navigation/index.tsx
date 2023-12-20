@@ -1,16 +1,15 @@
-import React from 'react'
-import { NavigationContainer } from '@react-navigation/native'
-import NavigationApp from './app';
-import AuthNavigation from './auth/auth.navigation';
+import React from "react";
+import { NavigationContainer } from "@react-navigation/native";
+import NavigationApp from "./app";
+import AuthNavigation from "./auth/auth.navigation";
 
 const ContainerNavigation = () => {
-
-  const isSignedIn = true;
+  const isSignedIn = false;
   return (
     <NavigationContainer>
-      {isSignedIn ? <NavigationApp />: <AuthNavigation />}
+      {isSignedIn ? <NavigationApp /> : <AuthNavigation />}
     </NavigationContainer>
-  )
-}
+  );
+};
 
-export default ContainerNavigation
+export default ContainerNavigation;
