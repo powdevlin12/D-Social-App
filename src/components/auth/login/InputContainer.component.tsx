@@ -5,6 +5,7 @@ import gstyle from "../../../theme/styles/global";
 import { Control, Controller, FieldErrors } from "react-hook-form";
 import { InputsLogin } from "../../../screens/auth/LoginScreen";
 import TextError from "../../common/text/TextError.component";
+import TextPasswordCustom from "../../common/textInput/TextPasswordCustom.component";
 
 type InputContainerProps = {
   control: Control<InputsLogin, any>;
@@ -50,7 +51,7 @@ const InputContainer = ({ control, errors }: InputContainerProps) => {
             },
           }}
           render={({ field: { onChange, onBlur, value } }) => (
-            <TextInputCustom
+            <TextPasswordCustom
               placeholder="Password"
               onChangeText={onChange}
               onBlur={onBlur}

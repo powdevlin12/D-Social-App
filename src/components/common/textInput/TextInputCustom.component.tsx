@@ -1,10 +1,4 @@
-import {
-  StyleSheet,
-  Text,
-  TextInput,
-  View,
-  TextInputProps,
-} from "react-native";
+import { StyleSheet, TextInput, TextInputProps } from "react-native";
 import React from "react";
 import { dimension } from "../../../utils/dimension";
 import gstyle from "../../../theme/styles/global";

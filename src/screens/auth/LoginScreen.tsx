@@ -32,7 +32,6 @@ import { SubmitHandler, useForm } from "react-hook-form";
 export type InputsLogin = {
   username: string;
   password: string;
-  test: string;
 };
 
 const LoginScreen = () => {
@@ -57,7 +56,6 @@ const LoginScreen = () => {
     defaultValues: {
       username: "",
       password: "",
-      test: "",
     },
   });
 
