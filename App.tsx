@@ -1,20 +1,12 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import 'react-native-gesture-handler';
+import ContainerNavigation from './src/navigation';
+import { Provider } from 'react-redux';
+import store from './src/redux';
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>DAT FIRST APP</Text>
-      <StatusBar style="auto" />
-    </View>
+    <Provider store={store}>
+      <ContainerNavigation />
+    </Provider>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
