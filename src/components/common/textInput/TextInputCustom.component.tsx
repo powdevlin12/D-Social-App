@@ -25,6 +25,7 @@ const TextInputCustom: React.FC<TextInputCustomProps> = ({
       selectionColor={colors.light.text.primary}
       caretHidden={false}
       placeholderTextColor={colors.light.text.secondary}
+      {...rest}
     />
   );
 };

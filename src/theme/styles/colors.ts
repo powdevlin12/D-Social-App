@@ -9,6 +9,7 @@ const light = {
   },
   border: "#887E7E",
   button: "#0B6EFE",
+  dangerours: "#D84315",
 };
 
 const dark = {
@@ -22,6 +23,7 @@ const dark = {
   },
   border: "#887E7E",
   button: "#0B6EFE",
+  dangerours: "#D84315",
 };
 
 const colors = {

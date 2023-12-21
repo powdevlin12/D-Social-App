@@ -10,6 +10,7 @@ const fontSize = {
   small: 12,
   normal: 14,
   large: 16,
+  button: 20,
   title: 24,
 };
 

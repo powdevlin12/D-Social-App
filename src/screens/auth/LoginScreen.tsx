@@ -27,11 +27,17 @@ import Animated, {
   withTiming,
   withSpring,
 } from "react-native-reanimated";
+import { SubmitHandler, useForm } from "react-hook-form";
+
+export type InputsLogin = {
+  username: string;
+  password: string;
+  test: string;
+};
 
 const LoginScreen = () => {
   const scaleDecorate = useSharedValue(1);
   const heightDecorate = useSharedValue(dimension.height / 4);
-
   const rStyle = useAnimatedStyle(() => {
     return {
       transform: [
@@ -43,13 +49,29 @@ const LoginScreen = () => {
     };
   });
 
+  const {
+    control,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<InputsLogin>({
+    defaultValues: {
+      username: "",
+      password: "",
+      test: "",
+    },
+  });
+
+  const onSubmit: SubmitHandler<InputsLogin> = (data) => {
+    console.log("🚀 ~ file: LoginScreen.tsx:63 ~ LoginScreen ~ data:", data);
+  };
+
   useEffect(() => {
     const showSubscription = Keyboard.addListener("keyboardDidShow", () => {
-      scaleDecorate.value = withTiming(0.8, { duration: 300 });
+      scaleDecorate.value = withTiming(0.8, { duration: 500 });
       heightDecorate.value = withSpring(dimension.height / 5);
     });
     const hideSubscription = Keyboard.addListener("keyboardDidHide", () => {
-      scaleDecorate.value = withTiming(1, { duration: 200 });
+      scaleDecorate.value = withTiming(1, { duration: 300 });
       heightDecorate.value = withSpring(dimension.height / 4);
     });
 
@@ -81,14 +103,14 @@ const LoginScreen = () => {
             </View>
 
             <View style={styles.inputContainer}>
-              <InputContainer />
+              <InputContainer control={control} errors={errors} />
             </View>
             <TouchableOpacity style={styles.forgotPassword}>
               <TextNormal content="Forgot password ?" />
             </TouchableOpacity>
 
             <View style={styles.btnContainer}>
-              <ButtonCustom label="Login" />
+              <ButtonCustom label="Login" onPress={handleSubmit(onSubmit)} />
             </View>
           </KeyboardAvoidingView>
           <View style={styles.decorate2}>
