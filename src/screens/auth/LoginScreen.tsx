@@ -1,5 +1,14 @@
-import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
-import React from "react";
+import {
+  Image,
+  Keyboard,
+  KeyboardAvoidingView,
+  ScrollView,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from "react-native";
+import React, { useEffect } from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import gstyle from "../../theme/styles/global";
 import { images } from "../../assets";
@@ -12,78 +21,140 @@ import ButtonCustom from "../../components/common/button/ButtonCustom.component"
 import { LinearGradient } from "expo-linear-gradient";
 import colors from "../../theme/styles/colors";
 import LoginOAuth from "../../components/auth/login/LoginOAuth.component";
+import Animated, {
+  useAnimatedStyle,
+  useSharedValue,
+  withTiming,
+  withSpring,
+} from "react-native-reanimated";
+import { SubmitHandler, useForm } from "react-hook-form";
+
+export type InputsLogin = {
+  username: string;
+  password: string;
+};
 
 const LoginScreen = () => {
+  const scaleDecorate = useSharedValue(1);
+  const heightDecorate = useSharedValue(dimension.height / 4);
+  const rStyle = useAnimatedStyle(() => {
+    return {
+      transform: [
+        {
+          scale: scaleDecorate.value,
+        },
+      ],
+      height: heightDecorate.value,
+    };
+  });
+
+  const {
+    control,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<InputsLogin>({
+    defaultValues: {
+      username: "",
+      password: "",
+    },
+  });
+
+  const onSubmit: SubmitHandler<InputsLogin> = (data) => {
+    console.log("🚀 ~ file: LoginScreen.tsx:63 ~ LoginScreen ~ data:", data);
+  };
+
+  useEffect(() => {
+    const showSubscription = Keyboard.addListener("keyboardDidShow", () => {
+      scaleDecorate.value = withTiming(0.8, { duration: 500 });
+      heightDecorate.value = withSpring(dimension.height / 5);
+    });
+    const hideSubscription = Keyboard.addListener("keyboardDidHide", () => {
+      scaleDecorate.value = withTiming(1, { duration: 300 });
+      heightDecorate.value = withSpring(dimension.height / 4);
+    });
+
+    return () => {
+      showSubscription.remove();
+      hideSubscription.remove();
+    };
+  }, []);
+
   return (
     <SafeAreaView style={gstyle.container}>
       <Background>
-        <View style={styles.decorateTop}>
-          <Image
-            source={images.auth.login.decorate1}
-            resizeMode="contain"
-            style={styles.imgDecorateTop}
-          />
-        </View>
-        <View
-          style={{
-            marginVertical: gstyle.space[4],
-            marginHorizontal: gstyle.space[3],
-          }}
-        >
-          <TextTitle content="Login D-Social" />
-        </View>
-        <View style={styles.inputContainer}>
-          <InputContainer />
-        </View>
-        <TouchableOpacity style={styles.forgotPassword}>
-          <TextNormal content="Forgot password ?" />
-        </TouchableOpacity>
-        <View style={styles.decorateBottom}>
-          <Image
-            source={images.auth.login.decorate}
-            resizeMode="cover"
-            style={{ width: dimension.width }}
-          />
-        </View>
-        <View style={styles.btnContainer}>
-          <ButtonCustom label="Login" />
-        </View>
-        <View style={styles.decorate2}>
-          <LinearGradient
-            // Background Linear Gradient
-            colors={["#0B6EFE", "rgba(196, 196, 196, 0.00)"]}
-            style={{ flex: 1, height: 4 }}
-            start={{
-              x: 1,
-              y: 1,
-            }}
-            end={{
-              x: 0.1,
-              y: 0.1,
-            }}
-            locations={[0.1, 1]}
-          />
-          <Text style={{ paddingHorizontal: gstyle.space[2] }}>
-            Or Sign up With
-          </Text>
-          <LinearGradient
-            // Background Linear Gradient
-            colors={["#0B6EFE", "rgba(196, 196, 196, 0.00)"]}
-            style={{ flex: 1, height: 4 }}
-            start={{
-              x: 0.1,
-              y: 0.1,
-            }}
-            end={{
-              x: 1,
-              y: 1,
-            }}
-            locations={[0.3, 1]}
-          />
-        </View>
-        <View style={{ marginTop: gstyle.space[3] }}>
-          <LoginOAuth />
-        </View>
+        <ScrollView contentContainerStyle={gstyle.container}>
+          <KeyboardAvoidingView behavior="position">
+            <Animated.View style={[styles.decorateTop, rStyle]}>
+              <Image
+                source={images.auth.login.decorate1}
+                resizeMode="contain"
+                style={styles.imgDecorateTop}
+              />
+            </Animated.View>
+            <View
+              style={{
+                marginVertical: gstyle.space[4],
+                marginHorizontal: gstyle.space[3],
+              }}
+            >
+              <TextTitle content="Login D-Social" />
+            </View>
+
+            <View style={styles.inputContainer}>
+              <InputContainer control={control} errors={errors} />
+            </View>
+            <TouchableOpacity style={styles.forgotPassword}>
+              <TextNormal content="Forgot password ?" />
+            </TouchableOpacity>
+
+            <View style={styles.btnContainer}>
+              <ButtonCustom label="Login" onPress={handleSubmit(onSubmit)} />
+            </View>
+          </KeyboardAvoidingView>
+          <View style={styles.decorate2}>
+            <LinearGradient
+              // Background Linear Gradient
+              colors={["#0B6EFE", "rgba(196, 196, 196, 0.00)"]}
+              style={{ flex: 1, height: 4 }}
+              start={{
+                x: 1,
+                y: 1,
+              }}
+              end={{
+                x: 0.1,
+                y: 0.1,
+              }}
+              locations={[0.1, 1]}
+            />
+            <Text style={{ paddingHorizontal: gstyle.space[2] }}>
+              Or Sign up With
+            </Text>
+            <LinearGradient
+              // Background Linear Gradient
+              colors={["#0B6EFE", "rgba(196, 196, 196, 0.00)"]}
+              style={{ flex: 1, height: 4 }}
+              start={{
+                x: 0.1,
+                y: 0.1,
+              }}
+              end={{
+                x: 1,
+                y: 1,
+              }}
+              locations={[0.3, 1]}
+            />
+          </View>
+          <View style={{ marginTop: gstyle.space[3] }}>
+            <LoginOAuth />
+          </View>
+          <View style={styles.decorateBottom}>
+            <Image
+              source={images.auth.login.decorate}
+              resizeMode="cover"
+              style={{ width: dimension.width }}
+            />
+          </View>
+        </ScrollView>
       </Background>
     </SafeAreaView>
   );
@@ -95,10 +166,11 @@ const styles = StyleSheet.create({
   decorateTop: {
     alignItems: "center",
     marginTop: gstyle.space[4],
+    width: dimension.width - gstyle.space[3] * 2,
   },
   imgDecorateTop: {
-    width: dimension.width - gstyle.space[3] * 2,
-    height: dimension.height / 4,
+    width: "100%",
+    height: "100%",
   },
   inputContainer: {
     marginTop: gstyle.space[0],

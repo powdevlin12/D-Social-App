@@ -1,10 +1,14 @@
-import { StyleSheet, TouchableOpacity } from "react-native";
+import {
+  StyleSheet,
+  TouchableOpacity,
+  TouchableOpacityProps,
+} from "react-native";
 import React from "react";
 import colors from "../../../theme/styles/colors";
 import gstyle from "../../../theme/styles/global";
 import TextTitle from "../text/TextTitle.component";
 
-interface ButtonCustomProps {
+interface ButtonCustomProps extends TouchableOpacityProps {
   activeOpacity?: number;
   label: string;
 }
@@ -37,7 +41,7 @@ const styles = StyleSheet.create({
   },
   text: {
     color: colors.dark.text.primary,
-    fontSize: gstyle.fontSize.title,
+    fontSize: gstyle.fontSize.button,
     fontWeight: "bold",
   },
 });
