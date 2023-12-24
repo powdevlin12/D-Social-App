@@ -1,5 +1,4 @@
 import axios from "axios";
-import { SERVER_URL } from "../../utils/constants";
 // Set up a rate limit configuration object
 const rateLimitConfig = {
   maxRequests: 10, // Maximum number of requests allowed per time period
@@ -11,7 +10,7 @@ const rateLimitConfig = {
 };
 // Create a custom axios instance with the rate limit interceptor
 const apiClient = axios.create({
-  baseURL: SERVER_URL,
+  baseURL: process.env.EXPO_PUBLIC_API_LOCAL,
 });
 apiClient.interceptors.request.use((config) => {
   // Check if the rate limit has been exceeded

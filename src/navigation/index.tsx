@@ -4,7 +4,7 @@ import NavigationApp from "./app";
 import AuthNavigation from "./auth/auth.navigation";
 
 const ContainerNavigation = () => {
-  const isSignedIn = false;
+  const isSignedIn = true;
   return (
     <NavigationContainer>
       {isSignedIn ? <NavigationApp /> : <AuthNavigation />}
