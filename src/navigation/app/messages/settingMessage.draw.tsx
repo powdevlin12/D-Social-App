@@ -9,6 +9,7 @@ import ChangeTheme from "../../../screens/app/messages/animated/ChangeTheme";
 import PinchGesture from "../../../screens/app/messages/animated/PinchGesture";
 import DoubleTapIg from "../../../screens/app/messages/animated/DoubleTapIg";
 import CallSwr from "../../../screens/app/messages/callApi/CallSwr.screen";
+import CallSwrMutation from "../../../screens/app/messages/callApi/CallSwrMutation.screen";
 
 export type MessageDrawType = {
   setTheme: undefined;
@@ -21,13 +22,14 @@ export type MessageDrawType = {
   PinchGesture: undefined;
   DoubleTabIg: undefined;
   CallSwr: undefined;
+  CallSwrMutation: undefined;
 };
 
 const Drawer = createDrawerNavigator<MessageDrawType>();
 
 export function MessageSettingDrawer() {
   return (
-    <Drawer.Navigator initialRouteName="CallSwr">
+    <Drawer.Navigator initialRouteName="CallSwrMutation">
       <Drawer.Screen name="listMessageDraw" component={ListMessageScreen} />
       <Drawer.Screen name="setTheme" component={SetThemeScreen} />
       <Drawer.Screen
@@ -44,6 +46,7 @@ export function MessageSettingDrawer() {
       <Drawer.Screen name="PinchGesture" component={PinchGesture} />
       <Drawer.Screen name="DoubleTabIg" component={DoubleTapIg} />
       <Drawer.Screen name="CallSwr" component={CallSwr} />
+      <Drawer.Screen name="CallSwrMutation" component={CallSwrMutation} />
     </Drawer.Navigator>
   );
 }

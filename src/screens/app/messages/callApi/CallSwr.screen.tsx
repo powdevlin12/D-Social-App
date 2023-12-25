@@ -17,6 +17,7 @@ import ButtonCustom from "../../../../components/common/button/ButtonCustom.comp
 const CallSwr = () => {
   // const { error, posts, isLoading } = usePost(3);
   const { error, todos, isLoading, mutate } = useGetTodo();
+
   const [todo, setTodo] = useState<string>("");
 
   const addTodo = async () => {

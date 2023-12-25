@@ -10,7 +10,11 @@ class TestService {
     return response.data;
   };
 
-  getTodos = async (url: string) => {
+  getTodos = async (url: string, token: string) => {
+    console.log(
+      "🚀 ~ file: test.service.ts:14 ~ TestService ~ getTodos= ~ token:",
+      token
+    );
     const response = await axios.get<TGetTodos>(url);
     return response.data;
   };
