@@ -66,5 +66,8 @@ const styles = StyleSheet.create({
   },
   iconShowPassword: {
     width: 30,
+    height: "100%",
+    alignItems: "center",
+    justifyContent: "center",
   },
 });

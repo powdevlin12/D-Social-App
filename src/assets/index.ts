@@ -12,4 +12,7 @@ export const images = {
       decorate1: require("./auth/login/decorate1.png"),
     },
   },
+  lottier: {
+    setup: require("./lottiers/setup.json"),
+  },
 } as const;
