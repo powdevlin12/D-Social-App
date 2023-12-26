@@ -4,7 +4,7 @@ import { TGetTodos } from "../../../types/responses/test/test.response";
 
 const useGetTodo = () => {
   const token: string = "dsadwqd32fewfw.fwefewffasdbny.juykyikfewfewf";
-  const { data, error, isLoading, mutate } = useSWR<TGetTodos>(
+  const { data, error, isLoading, mutate } = useSWR<TGetTodos[]>(
     [`${process.env.EXPO_PUBLIC_API_LOCAL}/todos/get-all`, token],
     ([url, token]: [string, string]) => testService.getTodos(url, token),
     {
