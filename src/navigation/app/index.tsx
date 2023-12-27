@@ -32,6 +32,8 @@ const routes: Array<React.ComponentProps<typeof Stack.Screen>> = [
     component: MessageNavigation,
     options: {
       headerShown: false,
+      freezeOnBlur: true,
+      unmountOnBlur: true,
     },
   },
   {
