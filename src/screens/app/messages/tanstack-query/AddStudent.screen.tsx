@@ -1,50 +1,73 @@
-import { FlatList, StyleSheet, Text, View } from "react-native";
-import React, { useEffect, useState } from "react";
-import { getStudents } from "../../../../services/tanstack/student";
-import { TStudent } from "../../../../types/responses/tanstack/student.type";
+import React, { useState } from "react";
+import { View } from "react-native";
 import gstyle from "../../../../theme/styles/global";
-import ItemStudent from "./components/ItemStudent.component";
-import { useQuery } from "@tanstack/react-query";
+import TextInputCustom from "../../../../components/common/textInput/TextInputCustom.component";
+import { IStudent } from "../../../../types/responses/tanstack/student.type";
+import ButtonCustom from "../../../../components/common/button/ButtonCustom.component";
+
+type TFormState = Omit<IStudent, "id">;
 
 const AddStudent = () => {
-  // binh thuong ta van lam
-  // const [students, setStudents] = useState<TStudent[]>([]);
-  // const [isLoading, setIsLoading] = useState<boolean>(false);
+  const initialFormState: TFormState = {
+    avatar: "",
+    btc_address: "",
+    country: "",
+    email: "",
+    first_name: "",
+    gender: "",
+    last_name: "",
+  };
 
-  // useEffect(() => {
-  //   setIsLoading(true);
-  //   getStudents(1, 10)
-  //     .then((res) => {
-  //       setStudents(res.data);
-  //     })
-  //     .catch((err) => console.log(JSON.stringify(err)))
-  //     .finally(() => {
-  //       setIsLoading(false);
-  //     });
-  // }, []);
-  const [page, setPage] = useState<number>(1);
-  console.log("🚀 ~ file: AddStudent.screen.tsx:26 ~ AddStudent ~ page:", page);
+  const [formState, setFormState] = useState<TFormState>(initialFormState);
 
-  const { data, isLoading } = useQuery({
-    queryKey: ["students", page],
-    queryFn: () => getStudents(page, 10),
-  });
+  const handleChangeField = (name: keyof TFormState) => (text: string) => {
+    setFormState((prev) => ({ ...prev, [name]: text }));
+  };
+
+  const handleSubmit = () => {
+    console.log(formState);
+  };
 
   return (
-    <View style={gstyle.container}>
-      {isLoading ? (
-        <Text>Loading ...</Text>
-      ) : (
-        <FlatList
-          data={data?.data}
-          renderItem={({ item }) => <ItemStudent student={item} />}
-          keyExtractor={(item) => item.id.toString()}
-        />
-      )}
+    <View style={[gstyle.container, { alignItems: "center" }]}>
+      <TextInputCustom
+        value={formState.avatar}
+        onChangeText={handleChangeField("avatar")}
+        placeholder="avatar"
+      />
+      <TextInputCustom
+        value={formState.btc_address}
+        onChangeText={handleChangeField("btc_address")}
+        placeholder="btc_address"
+      />
+      <TextInputCustom
+        value={formState.country}
+        onChangeText={handleChangeField("country")}
+        placeholder="country"
+      />
+      <TextInputCustom
+        value={formState.email}
+        onChangeText={handleChangeField("email")}
+        placeholder="email"
+      />
+      <TextInputCustom
+        value={formState.first_name}
+        onChangeText={handleChangeField("first_name")}
+        placeholder="first_name"
+      />
+      <TextInputCustom
+        value={formState.last_name}
+        onChangeText={handleChangeField("last_name")}
+        placeholder="last_name"
+      />
+      <TextInputCustom
+        value={formState.gender}
+        onChangeText={handleChangeField("gender")}
+        placeholder="gender"
+      />
+      <ButtonCustom label="Add Student" onPress={handleSubmit} />
     </View>
   );
 };
 
 export default AddStudent;
-
-const styles = StyleSheet.create({});

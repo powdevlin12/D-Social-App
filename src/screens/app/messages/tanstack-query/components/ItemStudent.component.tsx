@@ -4,12 +4,14 @@ import { TStudent } from "../../../../../types/responses/tanstack/student.type";
 
 type ItemStudentProps = {
   student: TStudent;
+  index: number;
 };
 
-const ItemStudent = ({ student }: ItemStudentProps) => {
+const ItemStudent = ({ student, index }: ItemStudentProps) => {
   const { avatar, email, id, last_name } = student;
   return (
     <View style={styles.container}>
+      <Text>{index}</Text>
       <Text>{last_name}</Text>
       <Text>{email}</Text>
     </View>

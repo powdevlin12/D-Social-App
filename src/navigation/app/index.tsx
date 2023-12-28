@@ -32,8 +32,6 @@ const routes: Array<React.ComponentProps<typeof Stack.Screen>> = [
     component: MessageNavigation,
     options: {
       headerShown: false,
-      freezeOnBlur: true,
-      unmountOnBlur: true,
     },
   },
   {
@@ -47,7 +45,13 @@ const routes: Array<React.ComponentProps<typeof Stack.Screen>> = [
 
 export default function NavigationApp() {
   return (
-    <Stack.Navigator initialRouteName="Home">
+    <Stack.Navigator
+      initialRouteName="Home"
+      screenOptions={{
+        freezeOnBlur: true,
+        unmountOnBlur: true,
+      }}
+    >
       {routes.map((routeConfig) => (
         <Stack.Screen key={routeConfig.name} {...routeConfig} />
       ))}
