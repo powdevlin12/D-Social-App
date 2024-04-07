@@ -9,6 +9,7 @@ import ChangeTheme from '../../../screens/app/messages/animated/ChangeTheme';
 import PinchGesture from '../../../screens/app/messages/animated/PinchGesture';
 import DoubleTapIg from '../../../screens/app/messages/animated/DoubleTapIg';
 import CircleProgress from '../../../screens/app/messages/animated/CircleProgress';
+import ClockLoader from '../../../screens/app/messages/animated/ClockLoader';
 
 export type MessageDrawType = {
 	setTheme: undefined;
@@ -21,13 +22,14 @@ export type MessageDrawType = {
 	PinchGesture: undefined;
 	DoubleTabIg: undefined;
 	CircleProgress: undefined;
+	ClockLoader: undefined;
 };
 
 const Drawer = createDrawerNavigator<MessageDrawType>();
 
 export function MessageSettingDrawer() {
 	return (
-		<Drawer.Navigator initialRouteName='DoubleTabIg'>
+		<Drawer.Navigator initialRouteName='ClockLoader'>
 			<Drawer.Screen name='listMessageDraw' component={ListMessageScreen} />
 			<Drawer.Screen name='setTheme' component={SetThemeScreen} />
 			<Drawer.Screen
@@ -44,6 +46,7 @@ export function MessageSettingDrawer() {
 			<Drawer.Screen name='PinchGesture' component={PinchGesture} />
 			<Drawer.Screen name='DoubleTabIg' component={DoubleTapIg} />
 			<Drawer.Screen name='CircleProgress' component={CircleProgress} />
+			<Drawer.Screen name='ClockLoader' component={ClockLoader} />
 		</Drawer.Navigator>
 	);
 }
